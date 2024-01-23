@@ -92,7 +92,7 @@ def input_modifier(user_input, state):
         if not query:
             return user_input
         else:
-            shared.processing_message = f"*Searching online for {query}*"
+            shared.processing_message = f"*Ricerca online per {query}*"
             state["context_instruct"] += "La domanda dell'utente è in Domanda dell'utente. I risultati di ricerca pertinenti si trovano nei risultati di ricerca di Google, si tratta di informazioni aggiornate. Sii sincero e segui ciò che viene fornito nei risultati di ricerca di Google. Utilizza i risultati di ricerca di Google nella risposta."
             try:
                 search_data = ""
@@ -101,19 +101,15 @@ def input_modifier(user_input, state):
             except Exception as e:
                 # print the type and message of the exception
                 print(type(e), e)
-                state[
-                    "context"
-                ] += "Informa l'utente che si è verificato un errore"
+                state["context"] += "Informa l'utente che si è verificato un errore"
                 pass         
             if search_data=="":
-                print("No results found!")
-                state[
-                    "context"
-                ] += "Comunica all'utente che non sono stati trovati risultati"
-                user_prompt = f"User question: {user_input}\n Google search results: NO RESULTS FOUND"
+                print("Nessun risultato trovato!")
+                state["context"] += "Comunica all'utente che non sono stati trovati risultati"
+                user_prompt = f"User question: {user_input}\n la ricerca Google: Nessun risultato trovato!"
             else:
                 search_data = search_data[:1024]
-                user_prompt = f"User question: {user_input}\n Google search results: {search_data}"
+                user_prompt = f"User question: {user_input}\n la ricerca Google: {search_data}"
                 return user_prompt
     return user_input
 
