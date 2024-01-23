@@ -17,11 +17,11 @@ No longer maintained.
 
  Type search then what you want to search for, example:
 
- Type ```search the weather in Nairobi, Kenya today.```
+ Type ```cerca il tempo a Nairobi, Kenya oggi.```
 
   Alternatively, you can type search followed by search query in double quotation marks and then a question to be answered, e.g.:
 
- Type ```search "the weather in Amsterdam" and tell me what should I wear.```
+ Type ```cerca "il tempo ad Amsterdam" e dimmi cosa dovrei indossare.```
 
  Requirements
 
