@@ -25,7 +25,7 @@ No longer maintained.
 
  Requirements
 
- - Google chrome browser
+ - firefox-esr browser
 
  How to install
 
