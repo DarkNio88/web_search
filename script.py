@@ -80,6 +80,8 @@ def update_search_access(checkbox_value):
 def input_modifier(user_input, state):
     global search_access
     if search_access:
+        state = state or {}  # initialize state dictionary if it's None
+        state['context_instruct'] = state.get('context_instruct', '')  # initialize 'context_instruct' key if it doesn't exist
         search_query = re.search(r'cerca\s+"([^"]+)"', user_input, re.IGNORECASE)
 
         if search_query:
@@ -93,7 +95,7 @@ def input_modifier(user_input, state):
             return user_input
         else:
             shared.processing_message = f"*Ricerca online per {query}*"
-            state["context_instruct"] += "La domanda dell'utente è in Domanda dell'utente. I risultati di ricerca pertinenti si trovano nei risultati di ricerca di Google, si tratta di informazioni aggiornate. Sii sincero e segui ciò che viene fornito nei risultati di ricerca di Google. Utilizza i risultati di ricerca di Google nella risposta."
+            state["context_instruct"] += "in italiano La domanda dell'utente è in Domanda dell'utente. I risultati di ricerca pertinenti si trovano nei risultati di ricerca di Google, si tratta di informazioni aggiornate. Sii sincero e segui ciò che viene fornito nei risultati di ricerca di Google. Utilizza i risultati di ricerca di Google nella risposta."
             try:
                 search_data = ""
                 for result in search(query, num_results=2):
